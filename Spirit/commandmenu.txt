@@ -1,0 +1,99 @@
+// Command Menu definition
+// 
+// Basic Format:
+//		"<Bound Key>" "<Button Text>" "<Command sent to server>"
+//
+// Or you can check for a specific class:
+//		<Class> "<BoundKey>" "<Button Text>" "<Command sent to server>"
+// Where <Class> is one of: SCOUT, SNIPER, SOLDIER, DEMOMAN, MEDIC, HWGUY, PYRO, SPY, ENGINEER
+// 
+// Or you can check for a specific map:
+//		MAP <MapName> "<BoundKey>" "<Button Text>" "<Command sent to server>"
+// Where <MapName> is the name of the map, without the ".bsp".
+//
+// Or you can check for a specific team:
+//		TEAM1 "<BoundKey>" "<Button Text>" "<Command sent to server>"
+//		TEAM2 "<BoundKey>" "<Button Text>" "<Command sent to server>"
+// TEAM3, TEAM4 work as well
+//
+// Buttons can also open up submenus, as follows:
+// {
+// 	"Some More Options",
+//	{
+//		...
+//	}
+// }
+//
+// Class can be any of the following:
+//		SCOUT, SNIPER, SOLDER, DEMOMAN, MEDIC, HWGUY, PYRO, SPY, ENGINEER
+//	Buttons prepended with a class name will only be seen if the player
+//	is that class. 
+//
+// Buttons preceded with "CUSTOM" are handled in special ways. They can only be moved
+// around or deleted.
+//
+//
+// Limitations:
+//		Maximum of 40 menus.
+//		Maximum of 100 buttons per menu.
+
+//--------------------------------------------------------
+// Everything below here is editable
+"1" "HELP"
+{
+	
+	CUSTOM		"1" "MAP DESCRIPTION"	"!MAPBRIEFING"
+}
+
+"2" "Game variables"	
+{
+	"1" "Glow effects" 
+	{
+		"1" "High-end glow" "r_glow 1"
+		"2" "Low-end glow" "r_glow 2"
+		"3" "glow off" "r_glow 0"
+		
+	}
+	
+	"2" "Cheats" 
+	{
+		"1" "God mode" "god"
+		"2" "noclip" "noclip'
+		"3" "All weapons" "impulse 101"
+		"4" "'Debug' gun" "give weapon_debug"
+	}
+
+	"3" "Performance"
+	{
+		"1" "Wireframe" 
+		{
+			"1" "Wireframe 1" 	"gl_wireframe 1"
+			"2" "Wireframe 2" 	"gl_wireframe 2"
+			"3" "Wireframe off" 	"gl_wireframe 0"			
+		}
+		"2" "R_speeds" 
+		{
+			"1" "Show render speeds" "r_speeds 1"
+			"2" "Hide render speeds" "r_speeds 0"
+		}
+
+		"3" "Log console" "condebug"
+	}
+}
+
+
+CUSTOM "3" "Inventory" "!SHOWINVENTORY"
+
+"4" "Objectives" 
+{
+	MAP musicsync "1" "Pick Up a weapon" 		""
+	MAP musicsync "2" "Find and Kill scientist" 	""	
+	
+	
+	MAP crates "1" 	"Find a way inside the compound." 	""
+	MAP crates "2" 	"Avoid alerting the guards."		""
+	MAP crates "3" 	"Get into the sub-surface area." 	""
+		
+}
+
+"5" "Drop Weapon (MPonly)" "drop"

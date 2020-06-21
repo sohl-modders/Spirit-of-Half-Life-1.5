@@ -60,9 +60,16 @@ TargetDir=.\Release
 InputPath=.\Release\client.dll
 SOURCE="$(InputPath)"
 
-"c:\games\half-life\spiritdev\cl_dlls\client.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	copy $(TargetDir)\client.dll "c:\games\half-life\spiritdev\cl_dlls\client.dll"
+BuildCmds= \
+	copy $(TargetDir)\client.dll "c:\games\half-life\spirit\cl_dlls\client1.5a4.dll" \
+	copy $(TargetDir)\client.dll "c:\games\half-life\spirit\cl_dlls\client.dll" \
+	
 
+"c:\games\half-life\spirit\cl_dlls\client1.5a4.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+   $(BuildCmds)
+
+"c:\games\half-life\spirit\cl_dlls\client.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+   $(BuildCmds)
 # End Custom Build
 
 !ELSEIF  "$(CFG)" == "cl_dll - Win32 Debug"
@@ -122,6 +129,10 @@ SOURCE=..\dlls\crowbar.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\CustomMenu.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=..\dlls\egon.cpp
 # End Source File
 # Begin Source File
@@ -163,10 +174,6 @@ SOURCE=..\dlls\hornetgun.cpp
 # Begin Source File
 
 SOURCE=..\common\interface.cpp
-# End Source File
-# Begin Source File
-
-SOURCE=.\mp3.cpp
 # End Source File
 # Begin Source File
 
@@ -327,6 +334,10 @@ SOURCE=.\message.cpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\mp3.cpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\overview.cpp
 # PROP Exclude_From_Build 1
 # End Source File
@@ -357,6 +368,10 @@ SOURCE=..\pm_shared\pm_math.c
 # Begin Source File
 
 SOURCE=..\pm_shared\pm_shared.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\rain.cpp
 # End Source File
 # Begin Source File
 

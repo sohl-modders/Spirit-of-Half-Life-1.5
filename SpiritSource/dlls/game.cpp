@@ -38,8 +38,13 @@ cvar_t	teamlist = {"mp_teamlist","hgrunt;scientist", FCVAR_SERVER };
 cvar_t	teamoverride = {"mp_teamoverride","1" };
 cvar_t	defaultteam = {"mp_defaultteam","0" };
 cvar_t	allowmonsters={"mp_allowmonsters","0", FCVAR_SERVER };
+
 cvar_t	mp3player = { "mp3player", "1", FCVAR_SERVER };
 cvar_t	mp3volume = { "mp3volume", "1", FCVAR_SERVER };
+
+cvar_t  timeddamage = {"timed_damage", "0", FCVAR_SERVER | FCVAR_ARCHIVE};//AJH Time based damage (nervegas/rad, not poison) on/off
+cvar_t	maxcameras = { "max_cameras", "2", FCVAR_SERVER | FCVAR_ARCHIVE}; //AJH the maximum number of inventory cameras a player may carry
+cvar_t	maxmedkit = { "max_medkit", "200", FCVAR_SERVER | FCVAR_ARCHIVE}; //AJH The maximum portable medkit charge a player may have
 
 cvar_t	impulsetarget={"sohl_impulsetarget","0", FCVAR_SERVER }; //LRC - trigger ents manually
 cvar_t	mw_debug={"sohl_mwdebug","0", FCVAR_SERVER }; //LRC - debug info. for MoveWith. (probably not useful for most people.)
@@ -487,7 +492,10 @@ void GameDLLInit( void )
 	CVAR_REGISTER (&mw_debug); //LRC
 	//CVAR_REGISTER (&mp3player); //G-Cont. Stuff for Mp3 player	//AJH - Too late, I've already added mp3/ogg
     //CVAR_REGISTER (&mp3volume); //G-Cont. Stuff for Mp3 player	//AJH
-	
+	CVAR_REGISTER (&timeddamage); //AJH Time based damage (nervegas/rad, not poison) on/off
+	CVAR_REGISTER (&maxcameras); //AJH the maximum number of inventory cameras a player may carry
+	CVAR_REGISTER (&maxmedkit); //AJH The maximum portable medkit charge a player may have
+
 	CVAR_REGISTER (&mp_chattime);
 
 // REGISTER CVARS FOR SKILL LEVEL STUFF

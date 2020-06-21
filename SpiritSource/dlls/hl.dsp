@@ -61,9 +61,16 @@ TargetDir=.\Releasehl
 InputPath=.\Releasehl\spirit.dll
 SOURCE="$(InputPath)"
 
-"c:\games\half-life\spiritdev\dlls\spirit.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	copy $(TargetDir)\spirit.dll "c:\games\half-life\spiritdev\dlls\spirit.dll"
+BuildCmds= \
+	copy $(TargetDir)\spirit.dll "c:\games\half-life\spirit\dlls\spirit.dll" \
+	copy $(TargetDir)\spirit.dll "c:\games\half-life\spirit\dlls\spirit1.5a4.dll" \
+	
 
+"c:\games\half-life\spirit\dlls\spirit.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+   $(BuildCmds)
+
+"c:\games\half-life\spirit\dlls\spirit1.5a4.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+   $(BuildCmds)
 # End Custom Build
 
 !ELSEIF  "$(CFG)" == "hl - Win32 Debug"
@@ -134,9 +141,16 @@ TargetDir=.\Profilehl
 InputPath=.\Profilehl\spirit.dll
 SOURCE="$(InputPath)"
 
-"c:\games\half-life\spirit\dlls\spirit14.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
-	copy $(TargetDir)\spirit.dll "C:\games\half-life\spirit\dlls\spirit14.dll"
+BuildCmds= \
+	copy $(TargetDir)\spirit.dll "C:\games\half-life\spirit\dlls\spirit15a4.dll" \
+	copy $(TargetDir)\spirit.dll "C:\games\half-life\spirit\dlls\spirit.dll" \
+	
 
+"c:\games\half-life\spirit\dlls\spirit15a4.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+   $(BuildCmds)
+
+"c:\games\half-life\spirit\dlls\spirit.dll" : $(SOURCE) "$(INTDIR)" "$(OUTDIR)"
+   $(BuildCmds)
 # End Custom Build
 
 !ENDIF 

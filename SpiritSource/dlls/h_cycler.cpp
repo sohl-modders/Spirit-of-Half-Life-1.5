@@ -381,6 +381,9 @@ void CWeaponCycler::SecondaryAttack( void )
 
 	m_flNextSecondaryAttack = gpGlobals->time + 0.3;
 }
+
+
+
 // Flaming Wreakage
 class CWreckage : public CBaseMonster
 {

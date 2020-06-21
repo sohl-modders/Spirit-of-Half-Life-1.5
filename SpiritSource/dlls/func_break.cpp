@@ -409,7 +409,8 @@ void CBreakable::Precache( void )
 // play shard sound when func_breakable takes damage.
 // the more damage, the louder the shard sound.
 
- float CBreakable::CalcRatio(CBaseEntity* plocus, int mode ){//AJH added 'mode' = ratio to return
+float CBreakable::CalcRatio(CBaseEntity* plocus, int mode )//AJH added 'mode' = ratio to return
+{
 	return pev->health/m_iInitialHealth;
 }
 
@@ -930,7 +931,8 @@ void CBreakable::Die( void )
 	if (m_iRespawnTime == -1)
 	{
 //		ALERT(at_debug,"Waiting for respawn trigger\n");
-		SetUse(&CBreakable:: RespawnUse );	}
+		SetUse(&CBreakable:: RespawnUse );
+	}
 	else if (m_iRespawnTime)
 	{
 //		ALERT(at_debug,"Respawning in %d secs\n",m_iRespawnTime);

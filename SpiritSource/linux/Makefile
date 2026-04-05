@@ -35,7 +35,9 @@ GAME_SHARED_OBJDIR=obj/game_shared
 BASE_CFLAGS=	-Dstricmp=strcasecmp -D_strnicmp=strncasecmp -Dstrnicmp=strncasecmp \
 		-DCLIENT_WEAPONS
 
-CFLAGS=$(BASE_CFLAGS) -w $(ARCHFLAGS) -O1 -fpermissive
+# -w suppresses warnings from legacy GoldSrc SDK code that uses non-standard constructs
+# -fpermissive allows pointer casts that the original MSVC-targeted code relied on
+CFLAGS=$(BASE_CFLAGS) -w -fpermissive $(ARCHFLAGS) -O1
 
 INCLUDEDIRS=-I$(DLL_SRCDIR) -I$(ENGINE_SRCDIR) -I$(COMMON_SRCDIR) \
             -I$(PM_SHARED_SRCDIR) -I$(GAME_SHARED_SRCDIR) -I..

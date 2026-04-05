@@ -320,6 +320,7 @@ public:
 	static	TYPEDESCRIPTION m_SaveData[];
 
 	virtual void SetNextThink( float delay ); //LRC
+	virtual void	KeyValue( KeyValueData* pkvd );
 
 	// generic weapon versions of CBasePlayerItem calls
 	virtual int AddToPlayer( CBasePlayer *pPlayer );
@@ -385,6 +386,11 @@ public:
 	int		m_iClipSize;//This required weapon_generic, defintion in same class will crash'es compile
 
 	int		m_iDefaultAmmo;// how much ammo you get when you pick up this weapon as placed by a level designer.
+
+	// weapon_generic model overrides (set via KeyValue "m_iszModel")
+	string_t	v_model;
+	string_t	p_model;
+	string_t	w_model;
 };
 
 
@@ -416,6 +422,7 @@ extern DLL_GLOBAL	short		g_sModelIndexBloodSpray;// holds the sprite index for b
 extern void ClearMultiDamage(void);
 extern void ApplyMultiDamage(entvars_t* pevInflictor, entvars_t* pevAttacker );
 extern void AddMultiDamage( entvars_t *pevInflictor, CBaseEntity *pEntity, float flDamage, int bitsDamageType);
+extern void UTIL_PrecacheOtherWeapon( const char *szClassname );
 
 extern void DecalGunshot( TraceResult *pTrace, int iBulletType );
 extern void SpawnBlood(Vector vecSpot, int bloodColor, float flDamage);

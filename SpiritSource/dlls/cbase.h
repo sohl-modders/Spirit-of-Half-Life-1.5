@@ -495,7 +495,7 @@ inline BOOL FNullEnt( CBaseEntity *ent )	{ return ent == NULL || FNullEnt( ent->
 
 // Ugly technique to override base member functions
 // Normally it's illegal to cast a pointer to a member function of a derived class to a pointer to a
-// member function of a base class.  static_cast is a sleezy way around that problem.
+// member function of a base class.  C-style casts are used on Linux to work around strict GCC rules.
 
 #ifdef _DEBUG
 
@@ -506,10 +506,10 @@ inline BOOL FNullEnt( CBaseEntity *ent )	{ return ent == NULL || FNullEnt( ent->
 
 #else
 
-#define SetThink( a ) m_pfnThink = static_cast <void (CBaseEntity::*)(void)> (a)
-#define SetTouch( a ) m_pfnTouch = static_cast <void (CBaseEntity::*)(CBaseEntity *)> (a)
-#define SetUse( a ) m_pfnUse = static_cast <void (CBaseEntity::*)( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value )> (a)
-#define SetBlocked( a ) m_pfnBlocked = static_cast <void (CBaseEntity::*)(CBaseEntity *)> (a)
+#define SetThink( a ) m_pfnThink = (void (CBaseEntity::*)(void))(a)
+#define SetTouch( a ) m_pfnTouch = (void (CBaseEntity::*)(CBaseEntity *))(a)
+#define SetUse( a ) m_pfnUse = (void (CBaseEntity::*)( CBaseEntity *pActivator, CBaseEntity *pCaller, USE_TYPE useType, float value ))(a)
+#define SetBlocked( a ) m_pfnBlocked = (void (CBaseEntity::*)(CBaseEntity *))(a)
 
 #endif
 
